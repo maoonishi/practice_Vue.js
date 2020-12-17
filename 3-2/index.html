@@ -8,9 +8,12 @@
   <body>
     <div id="app">
       <button
-        @click="handleClick"
-      >Push</button>
-      <p>{{ text }}</p>
+        @click="increment"
+      >+1</button>
+      <button
+        @click="decrement"
+      >-1</button>
+      <p>{{ count }}</p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="./script/script.js"></script>
