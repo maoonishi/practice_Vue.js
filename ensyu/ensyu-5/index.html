@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="./style.css" />
+        
+        <title>勤怠アプリ</title>
+    </head>
+    <body>
+    <h1>勤怠表</h1>
+
+    <div id="app">
+        <ul class="list">
+            <li v-for="list in label" class="list-item">
+                <a href="#" v-bind:class="{active:active===list}" @click="dropdown(list)">{{list}}</a>
+                <ul v-if="active===list">
+                    <li v-for="item in listlabel" class="sublist-item">
+                        <a href="#" v-bind:label="item">{{item}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p>1月の出勤日数：1月の総勤務時間</p>
+
+        <div>
+            <div>
+                <h2>現在日時</h2>            
+                <p>{{date}}</p>
+                <p>{{time}}</p>
+            </div>
+        </div>
+
+        <vue-ctk-date-time-picker label="出勤日時を選択" v-model="value"></vue-ctk-date-time-picker>
+        
+        <button v-on:click="timeDate()">出勤</button>
+        <p>{{value}}</p>
+
+        <vue-ctk-date-time-picker label="退勤時間を選択" v-model="value2" format="hh:mm a" form atted="hh:mm a" only-time></vue-ctk-date-time-picker>
+
+        <button v-on:click="timeDate2()">退勤</button>
+        <p>{{value2}}</p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>名前</th>
+                    <th>出勤時間</th>
+                    <th>退勤時間</th>
+                    <th>総勤務時間</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in items">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{value}}</td>
+                    <td>{{value2}}</td>
+                    <td>{{ item.total_time }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+       
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-ctk-date-time-picker@2.4.0/dist/vue-ctk-date-time-picker.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue-ctk-date-time-picker@2.4.0/dist/vue-ctk-date-time-picker.umd.min.js"></script>
+        <script src="./script.js"></script>
+    </body>
+</html>
