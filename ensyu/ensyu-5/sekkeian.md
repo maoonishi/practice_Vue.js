@@ -83,3 +83,34 @@
 ・カラム一覧（ID,ユーザーID,出勤時間、退勤時間、総勤務時間)
 
 ## バリテーションチェック
+
+## Node.jsからSQLを繋ぐ
+・データ登録ができるように
+
+## Error: cannnot find module
+・モジュール名問題
+Error: Cannot find module 'C:\Users\kizin\test.js'
+[90m    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:902:15)[39m
+[90m    at Function.Module._load (internal/modules/cjs/loader.js:746:27)[39m
+[90m    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)[39m
+[90m    at internal/main/run_main_module.js:17:47[39m {
+  code: [32m'MODULE_NOT_FOUND'[39m,
+  requireStack: []
+}
+
+・環境変数の設定
+export APP_DATA=c:\\Users\\satom\\AppData\\Roaming
+export NPM_MODULE_PATH=$APP_DATA\\npm\\node_modules
+export NODE_PATH=$NPM_MODULE_PATH
+
+## Sqlite3テーブル作成
+1, Sqlite内でテーブル作成 CREATE文
+    .作成するテーブル名は time にする
+2, Sqlite内でテストデータ作る INSERT文
+3, アプリからSqlite（time）のデータを取得
+4, アプリの出勤ボタン押されたらSqliteのテーブル（time）に登録する
+5, アプリ側ではリアルタイムに反映される
+
+## データ取得
+・Node.js(Express)でsqlite3のデータを書く
+・Vue.jsに返す

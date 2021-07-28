@@ -44,8 +44,8 @@ new Vue({
             this.value2
             console.log(this.value2);
         }
-    },
-    mounted: function() {           //現在日時の取得
+        },
+        mounted: function() {           //現在日時の取得
         let timerID = setInterval(this.updateTime, 1000);
     }
 });
